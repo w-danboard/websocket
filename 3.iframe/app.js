@@ -4,13 +4,13 @@ let app = express()
 // http://localhost:8000/
 app.use(express.static(__dirname))
 app.get('/clock', (req, res) => {
-  let $timer = setInterval(() => {
-    let date = new Date()
-    let seconds = date.getSeconds()
-    if (seconds%5 === 0) {
-      res.send(date.toLocaleString())
-      clearInterval($timer)
-    }
+  res.header('Contnet-Type', 'text/html')
+  setInterval(function () {
+    res.write(`
+      <script>
+        parent.setTime('${new Date().toString()}')
+      </script>
+    `)
   }, 1000)
 })
-app.listen(8000)
+app.listen(9000)

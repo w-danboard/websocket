@@ -7,22 +7,13 @@
   <title>Document</title>
 </head>
 <body>
-  <div id="clock"></div>
+  <div id="clock" style="border: 1px solid red;"></div>
+  <!-- http://localhost:8000/clock -->
+  <iframe src="/clock" style="display: none;"></iframe>
   <script>
-    // 长轮询
-    let clock = document.querySelector('#clock')
-    function send () {
-      let xhr = new XMLHttpRequest;
-      xhr.open('GET', '/clock', true)
-      xhr.onreadystatechange = () => {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-          clock.innerHTML = xhr.responseText
-          send()
-        }
-      }
-      xhr.send()
+    function setTime (ts) {
+      document.querySelector('#clock').innerHTML = ts
     }
-    send()
   </script>
 </body>
 </html>
