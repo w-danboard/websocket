@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let socket = new WebSocket('ws://localhost:8888')
+
+    socket.onopen = function (event) {
+      console.log('1.客户端连接上了服务器')
+      socket.send('3.你好')
+    }
+
+    socket.onmessage = function (event) {
+      console.log('6' + event.data)
+    }
+  </script>
+</body>
+</html>
