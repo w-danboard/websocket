@@ -8,11 +8,11 @@
 </head>
 <body>
   <script>
-    let socket = new WebSocket('ws://localhost:8888')
+    let socket = new WebSocket('ws://localhost:9999')
 
     socket.onopen = function (event) {
       console.log('1.客户端连接上了服务器')
-      socket.send('3.你好')
+      socket.send('hello')
     }
 
     socket.onmessage = function (event) {
